@@ -8,7 +8,7 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>books-service</module>
+        <module>book-service</module>
         <module>user-service</module>
         <module>borrowing-service</module>
     </modules>
