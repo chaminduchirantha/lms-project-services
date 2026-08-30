@@ -1,37 +1,44 @@
-# User Service
+# LMS Project Services
 
-The **User Service** is a microservice of the Learning Management System (LMS) project. It is responsible for managing user-related operations such as user registration, user information, and user management.
+This repository contains the backend microservices of the **Learning Management System (LMS)**.
 
-## 🚀 Technologies Used
+The project follows a **Microservices Architecture**, where each service is responsible for a specific business functionality.
 
-- Java 21
-- Spring Boot
-- Spring Data MongoDB
-- Spring Cloud Netflix Eureka
-- Maven
-- MongoDB
-- REST API
+## 📦 Services
 
-## 📌 Service Responsibilities
+### 1. User Service
 
-The User Service handles:
+Responsible for user-related operations and user management.
 
-- User registration
-- User Login
-- User information management
-- User-related REST API operations
-- Service registration with Eureka Server
+### 2. Book Service
 
-## 🏗️ Project Structure
+Responsible for managing books and book-related operations.
+
+### 3. Borrowing Service
+
+Responsible for book borrowing and borrowing-related operations.
+
+## 🏗️ Architecture
 
 ```text
-user-service/
-├── src/
-│   ├── main/
-│   │   ├── java/
-│   │   │   └── ...
-│   │   └── resources/
-│   │       └── application.yml
-│   └── test/
-├── pom.xml
-└── README.md
+                         ┌─────────────────┐
+                         │    Frontend     │
+                         └────────┬────────┘
+                                  │
+                                  ▼
+                         ┌─────────────────┐
+                         │   API Gateway   │
+                         └────────┬────────┘
+                                  │
+                ┌─────────────────┼─────────────────┐
+                │                 │                 │
+                ▼                 ▼                 ▼
+        ┌──────────────┐  ┌──────────────┐  ┌────────────────┐
+        │ User Service │  │ Book Service │  │Borrowing       │
+        │              │  │              │  │Service         │
+        └──────┬───────┘  └──────┬───────┘  └───────┬────────┘
+               │                 │                   │
+               ▼                 ▼                   ▼
+           ┌───────┐         ┌───────┐          ┌───────┐
+           │MongoDB│         │MongoDB│          │MySql│
+           └───────┘         └───────┘          └───────┘
